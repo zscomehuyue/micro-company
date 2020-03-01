@@ -6,9 +6,6 @@ import com.idugalic.commandside.blog.command.PublishBlogPostCommand;
 import com.idugalic.common.blog.event.BlogPostCreatedEvent;
 import com.idugalic.common.blog.event.BlogPostPublishedEvent;
 import com.idugalic.common.blog.model.BlogPostCategory;
-
-import java.util.Date;
-
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.commandhandling.model.AggregateIdentifier;
 import org.axonframework.eventsourcing.EventSourcingHandler;
@@ -16,11 +13,14 @@ import org.axonframework.spring.stereotype.Aggregate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Date;
+
 import static org.axonframework.commandhandling.model.AggregateLifecycle.apply;
+
 
 /**
  * A BlogPost aggregate root.
- * 
+ *   博客
  * @author idugalic
  *
  */
@@ -58,15 +58,18 @@ public class BlogPostAggregate{
      * This constructor is marked as a 'CommandHandler' for the AddProductCommand. This
      * command can be used to construct new instances of the Aggregate. If successful a
      * new BlogPostAggregate is 'applied' to the aggregate using the Axon 'apply' method.
-     * The apply method appears to also propagate the Event to any other registered 'Event
+     * The apply method appears to also propagate(传播) the Event to any other registered 'Event
      * Listeners', who may take further action.
      *
      * @param command
      */
+    //FIXME commandHandler拦截器做了什么事情？？，该拦截器什么时候执行？
     @CommandHandler
     public BlogPostAggregate(CreateBlogPostCommand command) {
         LOG.debug("Command: 'CreateBlogPostCommand' received.");
         LOG.debug("Queuing up a new BlogPostCreatedEvent for blog post '{}'", command.getId());
+
+        //FIXME 发送一个事件到聚合实体中；
         apply(new BlogPostCreatedEvent(command.getId(), command.getAuditEntry(), command.getTitle(),
                 command.getRawContent(), command.getPublicSlug(), command.getDraft(), command.getBroadcast(),
                 command.getPublishAt(), command.getCategory(), command.getAuthorId()));

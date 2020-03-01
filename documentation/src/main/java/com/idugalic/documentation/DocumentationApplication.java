@@ -171,7 +171,7 @@ public class DocumentationApplication {
         styles.addRelationshipStyle(Tags.ASYNCHRONOUS).dashed(true);
         styles.addRelationshipStyle(Tags.SYNCHRONOUS).dashed(false);
 
-        uploadWorkspaceToStructurizr(workspace, WORKSPACE_ID, env.getProperty("spring.application.structurizr.apikey"), env.getProperty("spring.application.structurizr.apisecret"));
+        //uploadWorkspaceToStructurizr(workspace, WORKSPACE_ID, env.getProperty("spring.application.structurizr.apikey"), env.getProperty("spring.application.structurizr.apisecret"));
     }
     
     private static void uploadWorkspaceToStructurizr(Workspace workspace, Long workspaceId, String apiKey, String apiSecret) throws Exception {

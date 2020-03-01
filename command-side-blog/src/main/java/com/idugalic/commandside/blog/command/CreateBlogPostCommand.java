@@ -3,15 +3,13 @@ package com.idugalic.commandside.blog.command;
 import com.idugalic.common.blog.model.BlogPostCategory;
 import com.idugalic.common.command.AuditableAbstractCommand;
 import com.idugalic.common.model.AuditEntry;
-
-import java.util.Date;
-import java.util.UUID;
+import org.axonframework.commandhandling.TargetAggregateIdentifier;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
-
-import org.axonframework.commandhandling.TargetAggregateIdentifier;
-import org.hibernate.validator.constraints.NotBlank;
+import java.util.Date;
+import java.util.UUID;
 
 /**
  * A command for creating a blog post.
@@ -23,22 +21,29 @@ public class CreateBlogPostCommand extends AuditableAbstractCommand {
 
     @TargetAggregateIdentifier
     private String id;
+
     @NotNull(message = "Title is mandatory")
     @NotBlank(message = "Title is mandatory")
     private String title;
+
     @NotNull(message = "rawContent is mandatory")
     @NotBlank(message = "rawContent is mandatory")
     private String rawContent;
+
     @NotNull(message = "PublicSlug is mandatory")
     @NotBlank(message = "PublicSlug is mandatory")
     private String publicSlug;
+
     @NotNull
     private Boolean draft;
+
     @NotNull
     private Boolean broadcast;
+
     @Future(message = "Publish at date must be the future")
     @NotNull
     private Date publishAt;
+
     @NotNull
     private BlogPostCategory category;
     private String authorId;

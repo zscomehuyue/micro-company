@@ -3,13 +3,11 @@ package com.idugalic.commandside.project.command;
 
 import com.idugalic.common.command.AuditableAbstractCommand;
 import com.idugalic.common.model.AuditEntry;
-
-import java.util.UUID;
-
-import javax.validation.constraints.NotNull;
-
 import org.axonframework.commandhandling.TargetAggregateIdentifier;
 import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.NotNull;
+import java.util.UUID;
 
 /**
  * A command for creating a project.
@@ -21,9 +19,11 @@ public class CreateProjectCommand extends AuditableAbstractCommand {
 
     @TargetAggregateIdentifier
     private String id;
+
     @NotNull(message = "Name is mandatory")
     @NotBlank(message = "Name is mandatory")
     private String name;
+
     @NotNull(message = "Repo Url is mandatory")
     @NotBlank(message = "Repo Url is mandatory")
     private String repoUrl;

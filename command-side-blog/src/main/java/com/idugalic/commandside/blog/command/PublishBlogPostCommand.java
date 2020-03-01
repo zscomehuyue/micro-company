@@ -2,10 +2,10 @@ package com.idugalic.commandside.blog.command;
 
 import com.idugalic.common.command.AuditableAbstractCommand;
 import com.idugalic.common.model.AuditEntry;
+import org.axonframework.commandhandling.TargetAggregateIdentifier;
 
 import java.util.Date;
 
-import org.axonframework.commandhandling.TargetAggregateIdentifier;
 
 /**
  * A command for publishing a blog post.

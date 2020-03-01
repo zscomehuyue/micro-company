@@ -81,7 +81,7 @@ The microservice architectural style is an approach to developing a single appli
 
 Microservices enable businesses to innovate faster and stay ahead of the competition. But one major challenge with the microservices architecture is the management of distributed data. Each microservice has its own private database. It is difficult to implement business transactions that maintain data consistency across multiple services as well as queries that retrieve data from multiple services.
 
-![Microservice Architecture - Ivan Dugalic](micro-company.PNG)
+![Microservice Architecture - Ivan Dugalic](company.PNG)
 
 ### Patterns and techniques:
 
